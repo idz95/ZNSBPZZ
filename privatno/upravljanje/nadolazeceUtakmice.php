@@ -33,24 +33,23 @@ $date=date("Y-m-d H:i");
 					$uvjet = "%" . (isset($_GET["uvjet"]) ? $_GET["uvjet"] : "") . "%";
 					
 					$izraz = $veza->prepare("
-					select count(a.sifra), b.sifra, b.ime, b.prezime, c.naziv, d.naziv as domacin, e.naziv as gost from utakmica a
-						 inner join sudac b on a.sudac=b.sifra
-                        inner join sport c on a.sport=c.sifra
-                        inner join fakultet d on a.domacin=d.sifra
-                        inner join fakultet e on a.gost=e.sifra
-                        where concat(b.ime, b.prezime, c.naziv, d.naziv, e.naziv) like :uvjet;");
+					select a.sifra, a.pocetak, b.ime, b.prezime, c.ime as imeDelegat, c.prezime as prezimeDelegat, d.naziv_kluba as domacin, d.mjesto, e.naziv_kluba as gost, e.mjesto as gost_mjesto, f.razina, f.smjer, f.kategorija  from utakmica a 
+                        inner join sudac b on a.sudac=b.sifra
+                        inner join delegat c on a.delegat=c.sifra
+                        inner join klub d on a.domacin=d.sifra
+                        inner join klub e on a.gost=e.sifra
+                        inner join liga f on a.liga=f.sifra;");
 
 					$izraz->execute(array("uvjet"=>$uvjet));
 			
 					
 					$izraz = $veza->prepare("
-						select a.sifra as sifraUtakmice, a.mjesto, a.domacin_score, a.gost_score, a.pocetak, b.ime, b.prezime, c.naziv, d.naziv as domacin, e.naziv as gost from utakmica a
-						 inner join sudac b on a.sudac=b.sifra
-                        inner join sport c on a.sport=c.sifra
-                        inner join fakultet d on a.domacin=d.sifra
-                        inner join fakultet e on a.gost=e.sifra
-                        where concat(b.ime, b.prezime, c.naziv, d.naziv, e.naziv) like :uvjet and pocetak > '$date'
-						order by c.naziv;
+						select a.sifra, a.pocetak, a.domacin_score, a.gost_score, b.ime, b.prezime, c.ime as imeDelegat, c.prezime as prezimeDelegat, d.mjesto, d.naziv_kluba as domacin, e.naziv_kluba as gost, e.mjesto as gost_mjesto, f.razina, f.smjer, f.kategorija  from utakmica a 
+                        inner join sudac b on a.sudac=b.sifra
+                        inner join delegat c on a.delegat=c.sifra
+                        inner join klub d on a.domacin=d.sifra
+                        inner join klub e on a.gost=e.sifra
+                        inner join liga f on a.liga=f.sifra;
 						");
 					
 					$izraz->bindParam("uvjet", $uvjet);
@@ -66,8 +65,7 @@ $date=date("Y-m-d H:i");
 								<th scope="col">Domacin</th>
 								<th scope="col">Gost</th>
 								<th scope="col">Datum</th>
-								<th scope="col">Lokacija</th>
-								<th scope="col">Sport</th>
+								<th scope="col">Delegat</th>
 								<th scope="col">Sudac</th>
 								<th scope="col">Rezultat</th>
 								<th scope="col">Akcija</th>
@@ -83,18 +81,17 @@ $date=date("Y-m-d H:i");
 						?>
 							
 							<tr>
-								<td><?php echo $red->domacin; ?></td>
-								<td><?php echo $red->gost; ?></td>
+								<td><?php echo $red->domacin . " " . $red->mjesto; ?></td>
+								<td><?php echo $red->gost . " " . $red->gost_mjesto; ?></td>
 								<td><?php echo date("d.m.Y. G:i",strtotime($red->pocetak)); ?></td>
-								<td><?php echo $red->mjesto; ?></td>
-								<td><?php echo $red->naziv; ?></td>
+								<td><?php echo $red->imeDelegat . " " . $red->prezimeDelegat; ?></td>
 								<td><?php echo $red->ime . " " . $red->prezime; ?></td>
 								<td><?php echo $red->domacin_score . " : " . $red->gost_score; ?></td>
 							
 								
 								<td>
-									<a href="promjenaNadolazece.php?sifra=<?php echo $red->sifraUtakmice ?>"><i class="far fa-edit fa-2x"></i></a>
-									<a onclick="return confirm('Sigurno obrisati?');" href="brisanje.php?sifra=<?php echo $red->sifraUtakmice ?>"><i class="far fa-trash-alt fa-2x"></i></a> 
+									<a href="promjenaNadolazece.php?sifra=<?php echo $red->sifra ?>"><i class="far fa-edit fa-2x"></i></a>
+									<a onclick="return confirm('Sigurno obrisati?');" href="brisanje.php?sifra=<?php echo $red->sifra ?>"><i class="far fa-trash-alt fa-2x"></i></a>
 								</td>
 
 							</tr>

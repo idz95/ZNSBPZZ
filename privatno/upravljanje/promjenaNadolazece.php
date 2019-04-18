@@ -10,7 +10,7 @@ if(!isset($_GET["sifra"])){
 
 	if(count($greska)==0){
 		$izraz=$veza->prepare("update utakmica set domacin=:domacin, gost=:gost, 
-		sport=:sport, sudac=:sudac,pocetak=:pocetak, mjesto=:mjesto, trajanje=:trajanje  where sifra=:sifra;");
+		liga=:liga, sudac=:sudac, delegat=:delegat, pocetak=:pocetak, mjesto=:mjesto, kolo=:kolo  where sifra=:sifra;");
 		$izraz->execute($_POST);
 		header("location: nadolazeceUtakmice.php");
 	}
@@ -61,12 +61,12 @@ if(!isset($_GET["sifra"])){
 		      <select id="domacin" name="domacin" class="form-control">
 		    			 <?php 
 									
-								$izraz = $veza->prepare("select sifra, naziv from fakultet order by naziv");
+								$izraz = $veza->prepare("select sifra, naziv_kluba, mjesto from klub order by mjesto");
 								$izraz->execute();
 								$rezultati = $izraz->fetchAll(PDO::FETCH_OBJ);
 								foreach ($rezultati as $red):
 								?>
-		        <option value="<?php echo $red->sifra; ?>"><?php echo $red->naziv; ?></option>
+		        <option value="<?php echo $red->sifra; ?>"><?php echo $red->naziv_kluba . " " . $red->mjesto; ?></option>
 		        <?php $domacin=$_POST["domacin"];  ?>
 					<?php endforeach; ?>
      			 </select>
@@ -78,12 +78,12 @@ if(!isset($_GET["sifra"])){
 		      <select id="gost" name="gost" class="form-control">
 		    			 <?php 
 									
-								$izraz = $veza->prepare("select sifra, naziv from fakultet order by naziv");
+								$izraz = $veza->prepare("select sifra, naziv_kluba, mjesto from klub order by mjesto");
 								$izraz->execute();
 								$rezultati = $izraz->fetchAll(PDO::FETCH_OBJ);
 								foreach ($rezultati as $red):
 								?>
-		        <option value="<?php echo $red->sifra; ?>"><?php echo $red->naziv; ?></option>
+		        <option value="<?php echo $red->sifra; ?>"><?php echo $red->naziv_kluba . " " . $red->mjesto; ?></option>
 		        <?php $gost=$_POST["gost"];  ?>
 					<?php endforeach; ?>
      			 </select>
@@ -95,32 +95,65 @@ if(!isset($_GET["sifra"])){
 		      <select id="sudac" name="sudac" class="form-control">
 		    			 <?php 
 									
-								$izraz = $veza->prepare("select sifra, ime, prezime, sport from sudac order by prezime, ime");
+								$izraz = $veza->prepare("select sifra, ime, prezime, liga from sudac order by prezime, ime");
 								$izraz->execute();
 								$rezultati = $izraz->fetchAll(PDO::FETCH_OBJ);
 								foreach ($rezultati as $red):
 								?>
-		        <option value="<?php echo $red->sifra; ?>"><?php echo $red->ime . " " . $red->prezime . " - " . $red->sport; ?></option>
+		        <option value="<?php echo $red->sifra; ?>"><?php echo $red->ime . " " . $red->prezime . " - " . $red->liga; ?></option>
 		        <?php $sudac=$_POST["sudac"];  ?>
 					<?php endforeach; ?>
      			 </select>
       
    			 </div>
+
+              <div class="form-group col-md-4">
+                  <label>Odaberi delegata</label>
+                  <select id="delegat" name="delegat" class="form-control">
+                      <?php
+
+                      $izraz = $veza->prepare("select sifra, ime, prezime, liga from delegat order by prezime, ime");
+                      $izraz->execute();
+                      $rezultati = $izraz->fetchAll(PDO::FETCH_OBJ);
+                      foreach ($rezultati as $red):
+                          ?>
+                          <option value="<?php echo $red->sifra; ?>"><?php echo $red->ime . " " . $red->prezime . " - " . $red->liga; ?></option>
+                          <?php $delegat=$_POST["delegat"];  ?>
+                      <?php endforeach; ?>
+                  </select>
+
+              </div>
    			 
    			 <div class="form-group col-md-4">
-		      <label>Odaberi sport</label>
-		      <select id="sport" name="sport" class="form-control">
+		      <label>Odaberi ligu</label>
+		      <select id="liga" name="liga" class="form-control">
 		    			 <?php 
 									
-								$izraz = $veza->prepare("select sifra, naziv from sport order by naziv");
+								$izraz = $veza->prepare("select sifra, razina, smjer, kategorija from liga order by sifra");
 								$izraz->execute();
 								$rezultati = $izraz->fetchAll(PDO::FETCH_OBJ);
 								foreach ($rezultati as $red):
 								?>
-		        <option value="<?php echo $red->sifra; ?>"><?php echo $red->naziv; ?></option>
-		        <?php $sport=$_POST["sport"];  ?>
+		        <option value="<?php echo $red->sifra; ?>"><?php echo $red->razina . " " . $red->smjer . " " . $red->kategorija; ?></option>
+		        <?php $liga=$_POST["liga"];  ?>
 					<?php endforeach; ?>
      			 </select>
+
+                 <div class="form-group col-md-4">
+                     <?php if(!isset($greska["kolo"])): ?>
+                         <label>Kolo
+                             <input class="form-control"  type="text" id="kolo" name="kolo" placeholder="Kolo"
+                                    value="<?php echo isset($_POST["kolo"]) ? $_POST["kolo"] : ""; ?>">
+                         </label>
+                     <?php else: ?>
+                         <label class="is-invalid-label">
+                             Kolo
+                             <input type="text"  id="kolo" name="kolo" class="is-invalid-input"  aria-invalid aria-describedby="uuid"
+                                    value="<?php echo isset($_POST["kolo"]) ? $_POST["kolo"] : ""; ?>" >
+                             <span class="form-error is-visible" id="uuid"><?php echo $greska["kolo"]; ?></span>
+                         </label>
+                     <?php endif; ?>
+                 </div>
       
    			 </div>
 		     
@@ -156,21 +189,7 @@ if(!isset($_GET["sifra"])){
 		 
 		     </div>
 		     
-		       <div class="form-group col-md-4 fadeOutLeft">
-		     	<?php if(!isset($greska["trajanje"])): ?>
-						  <label>Trajanje
-						    <input class="form-control"  type="number" id="trajanje" name="trajanje" placeholder="30"
-						    value="<?php echo isset($_POST["trajanje"]) ? $_POST["trajanje"] : ""; ?>">
-						  </label>
-						  <?php else: ?>
-						   <label class="is-invalid-label">
-						    Trajanje
-						    <input type="number"  id="trajanje" name="trajanje" class="is-invalid-input"  aria-invalid aria-describedby="uuid"
-						    value="<?php echo isset($_POST["trajanje"]) ? $_POST["trajanje"] : ""; ?>" >
-						    <span class="form-error is-visible" id="uuid"><?php echo $greska["trajanje"]; ?></span>
-						  </label>
-						  <?php endif; ?>
-		     </div>
+
 		     
 		     </div>  
 		     <input type="hidden" name="sifra" value="<?php echo $_POST["sifra"]; ?>"></input>

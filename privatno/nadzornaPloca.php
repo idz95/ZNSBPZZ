@@ -47,7 +47,7 @@ provjeraOvlasti();
 							<a href="klub/klub.php" class="list-group-item">Klubovi</a>
 							<a href="igrac/igrac.php" class="list-group-item">Igrači</a>
                             <a href="delegat/delegati.php" class="list-group-item">Delegati</a>
-							<a href="upravljanje/promjenaUtakmice.php" class="list-group-item">Završene utakmice</a>
+							<a href="liga/lige.php" class="list-group-item">Lige</a>
 							<a href="upravljanje/nadolazeceUtakmice.php" class="list-group-item">Nadolazeće utakmice</a>
 
 						

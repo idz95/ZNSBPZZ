@@ -9,7 +9,7 @@ if(!isset($_GET["sifra"])){
 	
 	$izraz=$veza->prepare("delete from utakmica where sifra=:sifra");
 	$izraz->execute($_GET);
-	header("location: promjenaUtakmice.php");
+	header("location: nadolazeceUtakmice.php");
 	
 }
 

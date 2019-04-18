@@ -9,8 +9,8 @@ if($_POST){
 
 	if(count($greska)==0){
 		unset($_POST["sifra"]);
-		$izraz=$veza->prepare("insert into igrac (ime, prezime, kontakt, godina, status, fakultet, brojgolova) 
-							values (:ime, :prezime, :kontakt, :godina, :status, :fakultet, :brojgolova);");
+		$izraz=$veza->prepare("insert into igrac (broj_registracije, oib, ime, prezime, datum_rodjenja, mjesto_rodjenja, drzavljanstvo, klub) 
+							values (:broj_registracije, :oib, :ime, :prezime, :datum_rodjenja, :mjesto_rodjenja, :drzavljanstvo, :klub);");
 		$izraz->execute($_POST);
 		header("location: igrac.php");
 	}
@@ -39,121 +39,140 @@ if($_POST){
 
 		  <div class="form-row">
 
-		    <div class="form-group col-md-4">
-		     	<?php if(!isset($greska["ime"])): ?>
-						  <label>Ime
-						    <input class="form-control" type="text" id="ime" name="ime" placeholder="Ivan"
-						    value="<?php echo isset($_POST["ime"]) ? $_POST["ime"] : ""; ?>">
-						  </label>
-						  <?php else: ?>
-						   <label class="is-invalid-label">
-						    Ime
-						    <input type="text"  id="ime" name="ime" class="is-invalid-input"  aria-invalid aria-describedby="uuid"
-						    value="<?php echo isset($_POST["ime"]) ? $_POST["ime"] : ""; ?>" >
-						    <span class="form-error is-visible" id="uuid"><?php echo $greska["ime"]; ?></span>
-						  </label>
-						  <?php endif; ?>
-		     </div>
+              <div class="form-group col-md-4">
+                  <?php if(!isset($greska["ime"])): ?>
+                      <label>Ime
+                          <input class="form-control" type="text" id="ime" name="ime" placeholder="Ivan"
+                                 value="<?php echo isset($_POST["ime"]) ? $_POST["ime"] : ""; ?>">
+                      </label>
+                  <?php else: ?>
+                      <label class="is-invalid-label">
+                          Ime
+                          <input type="text"  id="ime" name="ime" class="is-invalid-input"  aria-invalid aria-describedby="uuid"
+                                 value="<?php echo isset($_POST["ime"]) ? $_POST["ime"] : ""; ?>" >
+                          <span class="form-error is-visible" id="uuid"><?php echo $greska["ime"]; ?></span>
+                      </label>
+                  <?php endif; ?>
+              </div>
 
-		    <div class="form-group col-md-4">
-		     	<?php if(!isset($greska["prezime"])): ?>
-						  <label>Prezime
-						    <input class="form-control"  type="text" id="prezime" name="prezime" placeholder="Horvat"
-						    value="<?php echo isset($_POST["prezime"]) ? $_POST["prezime"] : ""; ?>">
-						  </label>
-						  <?php else: ?>
-						   <label class="is-invalid-label">
-						    Prezime
-						    <input type="text"  id="prezime" name="prezime" class="is-invalid-input"  aria-invalid aria-describedby="uuid"
-						    value="<?php echo isset($_POST["prezime"]) ? $_POST["prezime"] : ""; ?>" >
-						    <span class="form-error is-visible" id="uuid"><?php echo $greska["prezime"]; ?></span>
-						  </label>
-						  <?php endif; ?>
-		     </div>
+              <div class="form-group col-md-4">
+                  <?php if(!isset($greska["prezime"])): ?>
+                      <label>Prezime
+                          <input class="form-control"  type="text" id="prezime" name="prezime" placeholder="Horvat"
+                                 value="<?php echo isset($_POST["prezime"]) ? $_POST["prezime"] : ""; ?>">
+                      </label>
+                  <?php else: ?>
+                      <label class="is-invalid-label">
+                          Prezime
+                          <input type="text"  id="prezime" name="prezime" class="is-invalid-input"  aria-invalid aria-describedby="uuid"
+                                 value="<?php echo isset($_POST["prezime"]) ? $_POST["prezime"] : ""; ?>" >
+                          <span class="form-error is-visible" id="uuid"><?php echo $greska["prezime"]; ?></span>
+                      </label>
+                  <?php endif; ?>
+              </div>
 
-		     <div class="form-group col-md-4">
-		     	<?php if(!isset($greska["kontakt"])): ?>
-						  <label>Kontakt
-						    <input class="form-control"  type="text" id="kontakt" name="kontakt" placeholder="Tel broj"
-						    value="<?php echo isset($_POST["kontakt"]) ? $_POST["kontakt"] : ""; ?>">
-						  </label>
-						  <?php else: ?>
-						   <label class="is-invalid-label">
-						   Kontakt
-						    <input type="text"  id="kontakt" name="kontakt" class="is-invalid-input"  aria-invalid aria-describedby="uuid"
-						    value="<?php echo isset($_POST["kontakt"]) ? $_POST["kontakt"] : ""; ?>" >
-						    <span class="form-error is-visible" id="uuid"><?php echo $greska["kontakt"]; ?></span>
-						  </label>
-						  <?php endif; ?>
-		     </div>
+              <div class="form-group col-md-4">
+                  <?php if(!isset($greska["oib"])): ?>
+                      <label>OIB
+                          <input class="form-control"  type="number" id="oib" name="oib" placeholder="OIB"
+                                 value="<?php echo isset($_POST["oib"]) ? $_POST["oib"] : ""; ?>">
+                      </label>
+                  <?php else: ?>
+                      <label class="is-invalid-label">
+                          OIB
+                          <input type="number"  id="oib" name="oib" class="is-invalid-input"  aria-invalid aria-describedby="uuid"
+                                 value="<?php echo isset($_POST["oib"]) ? $_POST["oib"] : ""; ?>" >
+                          <span class="form-error is-visible" id="uuid"><?php echo $greska["oib"]; ?></span>
+                      </label>
+                  <?php endif; ?>
+              </div>
 
 
 
-		      <div class="form-group col-md-4">
-		     	<?php if(!isset($greska["godina"])): ?>
-						  <label>Godina
-						    <input class="form-control"  type="number" id="godina" name="godina" placeholder="Lozinka"
-						    value="<?php echo isset($_POST["lozinka"]) ? $_POST["lozinka"] : ""; ?>">
-						  </label>
-						  <?php else: ?>
-						   <label class="is-invalid-label">
-						    Godina
-						    <input type="number"  id="godina" name="godina" class="is-invalid-input"  aria-invalid aria-describedby="uuid"
-						    value="<?php echo isset($_POST["godina"]) ? $_POST["godina"] : ""; ?>" >
-						    <span class="form-error is-visible" id="uuid"><?php echo $greska["godina"]; ?></span>
-						  </label>
-						  <?php endif; ?>
-		     </div>
+              <div class="form-group col-md-4">
+                  <?php if(!isset($greska["broj_registracije"])): ?>
+                      <label>Broj_registracije
+                          <input class="form-control"  type="number" id="broj_registracije" name="broj_registracije" placeholder=""
+                                 value="<?php echo isset($_POST["broj_registracije"]) ? $_POST["broj_registracije"] : ""; ?>">
+                      </label>
+                  <?php else: ?>
+                      <label class="is-invalid-label">
+                          Broj registracije
+                          <input type="number"  id="broj_registracije" name="broj_registracije" class="is-invalid-input"  aria-invalid aria-describedby="uuid"
+                                 value="<?php echo isset($_POST["broj_registracije"]) ? $_POST["broj_registracije"] : ""; ?>" >
+                          <span class="form-error is-visible" id="uuid"><?php echo $greska["broj_registracije"]; ?></span>
+                      </label>
+                  <?php endif; ?>
+              </div>
 
-		     <div class="form-group col-md-4">
-		     	<?php if(!isset($greska["brojgolova"])): ?>
-						  <label>Trenutni broj golova
-						    <input class="form-control"  type="number" id="brojgolova" name="brojgolova" placeholder=""
-						    value="<?php echo isset($_POST["brojgolova"]) ? $_POST["brojgolova"] : ""; ?>">
-						  </label>
-						  <?php else: ?>
-						   <label class="is-invalid-label">
-						    Trenutni broj golova
-						    <input type="number"  id="brojgolova" name="brojgolova" class="is-invalid-input"  aria-invalid aria-describedby="uuid"
-						    value="<?php echo isset($_POST["brojgolova"]) ? $_POST["brojgolova"] : ""; ?>" >
-						    <span class="form-error is-visible" id="uuid"><?php echo $greska["brojgolova"]; ?></span>
-						  </label>
-						  <?php endif; ?>
-		     </div>
+              <div class="form-group col-md-4">
+                  <?php if(!isset($greska["drzavljanstvo"])): ?>
+                      <label>Državljanstvo
+                          <input class="form-control"  type="text" id="drzavljanstvo" name="drzavljanstvo" placeholder=""
+                                 value="<?php echo isset($_POST["drzavljanstvo"]) ? $_POST["drzavljanstvo"] : ""; ?>">
+                      </label>
+                  <?php else: ?>
+                      <label class="is-invalid-label">
+                          Državljanstvo
+                          <input type="text"  id="drzavljanstvo" name="drzavljanstvo" class="is-invalid-input"  aria-invalid aria-describedby="uuid"
+                                 value="<?php echo isset($_POST["drzavljanstvo"]) ? $_POST["drzavljanstvo"] : ""; ?>" >
+                          <span class="form-error is-visible" id="uuid"><?php echo $greska["drzavljanstvo"]; ?></span>
+                      </label>
+                  <?php endif; ?>
+              </div>
 
-		    <div class="form-group col-md-4">
-		     <label for="sport">Status veze
-				  <select class="form-control" name="status" id="status">
+              <div class="form-group col-md-4">
+                  <?php if(!isset($greska["mjesto_rodjenja"])): ?>
+                      <label>Mjesto rođenja
+                          <input class="form-control"  type="text" id="mjesto_rodjenja" name="mjesto_rodjenja" placeholder=""
+                                 value="<?php echo isset($_POST["mjesto_rodjenja"]) ? $_POST["mjesto_rodjenja"] : ""; ?>">
+                      </label>
+                  <?php else: ?>
+                      <label class="is-invalid-label">
+                          Mjesto rođenja
+                          <input type="text"  id="mjesto_rodjenja" name="mjesto_rodjenja" class="is-invalid-input"  aria-invalid aria-describedby="uuid"
+                                 value="<?php echo isset($_POST["mjesto_rodjenja"]) ? $_POST["mjesto_rodjenja"] : ""; ?>" >
+                          <span class="form-error is-visible" id="uuid"><?php echo $greska["mjesto_rodjenja"]; ?></span>
+                      </label>
+                  <?php endif; ?>
+              </div>
 
-								  <option value="Slobodan">Slobodan</option>
-								  <option value="Komplicirano je">Komplicirano je</option>
-								  <option value="Zauzet">Zauzet</option>
-								  <option value="Ne želi reći">Ne želi reći</option>
+              <div class="form-group col-md-4">
+                  <?php if(!isset($greska["datum_rodjenja"])): ?>
+                      <label>Datum rođenja
+                          <input class="form-control"  type="date" id="datum_rodjenja" name="datum_rodjenja" placeholder=""
+                                 value="<?php echo isset($_POST["datum_rodjenja"]) ? $_POST["datum_rodjenja"] : ""; ?>">
+                      </label>
+                  <?php else: ?>
+                      <label class="is-invalid-label">
+                          Datum rođenja
+                          <input type="date"  id="datum_rodjenja" name="datum_rodjenja" class="is-invalid-input"  aria-invalid aria-describedby="uuid"
+                                 value="<?php echo isset($_POST["datum_rodjenja"]) ? $_POST["datum_rodjenja"] : ""; ?>" >
+                          <span class="form-error is-visible" id="uuid"><?php echo $greska["datum_rodjenja"]; ?></span>
+                      </label>
+                  <?php endif; ?>
+              </div>
 
-				  </select>
-				  </label>
-		      </div>
 
-		     <div class="form-group col-md-4">
-		     <label for="sport">Ekipa
-				  <select class="form-control" name="fakultet" id="fakultet">
-						  	<?php
-									$izraz = $veza->prepare("select * from fakultet order by naziv");
-									$izraz->execute();
-									$rezultati = $izraz->fetchAll(PDO::FETCH_OBJ);
-									foreach ($rezultati as $red):
-									?>
-								  <option
-								  <?php
-								  if(isset($_POST["fakultet"]) && $_POST["fakultet"]==$red->sifra){
-								  	echo "selected=\"selected\"";
-								  }
-								  ?>
-								   value="<?php echo $red->sifra ?>"><?php echo $red->naziv ?></option>
-						<?php endforeach;?>
-				  </select>
-				  </label>
-		      </div>
+              <div class="form-group col-md-4">
+                  <label for="klub">Klub</label>
+                  <select class="form-control" name="klub" id="klub">
+                      <?php
+                      $izraz = $veza->prepare("select * from klub order by naziv_kluba");
+                      $izraz->execute();
+                      $rezultati = $izraz->fetchAll(PDO::FETCH_OBJ);
+                      foreach ($rezultati as $red):
+                          ?>
+                          <option
+                              <?php
+                              if(isset($_POST["klub"]) && $_POST["klub"]==$red->sifra){
+                                  echo "selected=\"selected\"";
+                              }
+                              ?>
+                                  value="<?php echo $red->sifra ?>"><?php echo $red->naziv_kluba . " " . $red->mjesto ?></option>
+                      <?php endforeach;?>
+                  </select>
+              </div>
 		     </div>
 		      <p><input type="submit" class="btn btn-primary btn-modify button expanded" value="Dodaj igrača"></input></p>
 		</form>
