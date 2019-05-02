@@ -66,7 +66,7 @@ if(!isset($_GET["sifra"])){
                       $rezultati = $izraz->fetchAll(PDO::FETCH_OBJ);
                       foreach ($rezultati as $red):
                           ?>
-                          <option value="<?php echo $red->sifra; ?>"><?php echo $red->razina . " " . $red->smjer . " " . $red->kategorija; ?></option>
+                          <option value="<?php echo $red->sifra; ?>"><?php echo $red->razina . ".ŽNL " . $red->smjer . "- " . $red->kategorija; ?></option>
                           <?php $liga=$_POST["liga"];  ?>
                       <?php endforeach; ?>
                   </select>

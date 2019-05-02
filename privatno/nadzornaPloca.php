@@ -54,7 +54,7 @@ provjeraOvlasti();
 						</div>
 						
 						<div class="col-md-4 text-center animate-box">
-							<a href="upravljanje/eraDijagram.php" class="list-group-item">ERA dijagram</a>
+
 						</div>
 							
 

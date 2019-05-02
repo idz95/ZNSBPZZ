@@ -22,7 +22,7 @@
 			<div class="row">
 
 
-                <div class="col-md-3 text-center">
+                <div class="col-md-4 text-center">
 
                     <div class="list-group">
                         <a href="#" class="list-group-item list-group-item-action active">
@@ -41,7 +41,7 @@
 
                 </div>
 
-                <div class="col-md-3 text-center">
+                <div class="col-md-4 text-center">
 
                     <div class="list-group">
                         <a href="#" class="list-group-item list-group-item-action active">
@@ -58,26 +58,9 @@
                         <?php endforeach; ?>
                     </div>
                 </div>
-                <div class="col-md-3 text-center">
 
-                    <div class="list-group">
-                        <a href="#" class="list-group-item list-group-item-action active">
-                            2. Županijska liga Mladi
-                        </a>
-                        <?php
 
-                        $izraz = $veza->prepare("select * from liga where razina=2 and kategorija!='Seniori';");
-                        $izraz->execute();
-                        $rezultati = $izraz->fetchAll(PDO::FETCH_OBJ);
-                        foreach ($rezultati as $red):
-                            ?>
-                            <a href="prikazLige.php?sifra=<?php echo $red->sifra;?>" class="list-group-item list-group-item-action"><?php echo "2.ŽNL " . $red->smjer . " " . $red->kategorija;?></a>
-                        <?php endforeach; ?>
-                    </div>
-
-                </div>
-
-                <div class="col-md-3 text-center">
+                <div class="col-md-4 text-center">
 
                     <div class="list-group">
                         <a href="#" class="list-group-item list-group-item-action active">
@@ -90,7 +73,7 @@
                         $rezultati = $izraz->fetchAll(PDO::FETCH_OBJ);
                         foreach ($rezultati as $red):
                             ?>
-                            <a href="prikazLige.php?sifra=<?php echo $red->sifra;?>" class="list-group-item list-group-item-action"><?php echo $red->kategorija;?></a>
+                            <a href="prikazLige.php?sifra=<?php echo $red->sifra;?>" class="list-group-item list-group-item-action"><?php echo "3.ŽNL " . $red->smjer;?></a>
                         <?php endforeach; ?>
                     </div>
 

@@ -68,8 +68,7 @@ if(!isset($_GET["sifra"])){
                         <li class="active"><a data-toggle="tab" href="#1kolo">1.kolo</a></li>
                         <li><a data-toggle="tab" href="#2kolo">2.kolo</a></li>
                         <li><a data-toggle="tab" href="#3kolo">3.kolo</a></li>
-                        <li><a data-toggle="tab" href="#4kolo">4.kolo</a></li>
-                        <li><a data-toggle="tab" href="#5kolo">5.kolo</a></li>
+
                     </ul>
 
                     <div class="tab-content">
@@ -91,7 +90,7 @@ if(!isset($_GET["sifra"])){
 
                                 <?php
                                 $izraz = $veza->prepare("
-						          select a.sifra as sifraUtakmice, a.pocetak, a.kolo, a.domacin_score, a.gost_score, a.opis, b.naziv_kluba as domacin, b.mjesto as domacin_mjesto, c.naziv_kluba as gost, c.mjesto as gost_mjesto, d.sifra from utakmica a
+						          select a.sifra as sifraUtakmice, a.pocetak, a.kolo, a.domacin_score, a.gost_score, a.opis, a.delegat_potvrdio, b.naziv_kluba as domacin, b.mjesto as domacin_mjesto, c.naziv_kluba as gost, c.mjesto as gost_mjesto, d.sifra from utakmica a
 						          inner join klub b on a.domacin=b.sifra
 						          inner join klub c on a.gost=c.sifra
 						          inner join liga d on a.liga=d.sifra
@@ -287,7 +286,7 @@ if(!isset($_GET["sifra"])){
 
                     $("#utakmicaIzmedu").html("");
                     $("#rezultat").html("");
-                    $("#pocetak").html("");
+                    $("#datum").html("");
                     $("#opis").html("");
 
                     var niz = jQuery.parseJSON(vratioServer);
