@@ -29,6 +29,7 @@ trajanje int,
 domacin_score int,
 gost_score int,
 opis text(500),
+delegat_potvrdio bit,
 sudac int not null,
 delegat int not null,
 domacin int not null,
@@ -45,7 +46,8 @@ lozinka char(32) not null,
 datum_rodjenja datetime not null,
 mjesto varchar(20) not null,
 mobitel varchar(20) not null,
-liga varchar(20) not null
+liga varchar(20) not null,
+uloga varchar(20) not null
 );
 
 create table delegat(
@@ -57,7 +59,8 @@ create table delegat(
 	datum_rodjenja datetime not null,
 	mjesto varchar(20) not null,
 	mobitel varchar(20) not null,
-	liga varchar(20) not null
+	liga varchar(20) not null,
+  uloga varchar(20) not null
 );
 
 create table klub(
@@ -107,6 +110,7 @@ create table dogadaj(
 	kategorija varchar(20) not null
 );
 
+
 alter table utakmica add foreign key (liga) references liga(sifra);
 alter table utakmica add foreign key (sudac) references sudac(sifra);
 alter table utakmica add foreign key (delegat) references delegat(sifra);
@@ -119,31 +123,49 @@ alter table klub add foreign key (liga) references liga(sifra);
 
 
 
-
-insert into admin(sifra, ime, prezime,email, lozinka,uloga) values
+insert into admin(sifra, ime, prezime,email, lozinka, uloga) values
 (null, 'Admin', 'Džambo', 'admin@hns.hr',md5('ivica'), 'admin');
 
-insert into sudac(sifra, ime, prezime, email, lozinka, datum_rodjenja, mjesto, mobitel, liga) values
-(null, 'Ivo', 'Marić', 'ivom@hns.hr', md5('sudac'), 1995-04-09, 'Vrpolje','095 856 7600','1.ŽNL'),
-(null, 'Ante', 'Marjanović', 'antem@hns.hr', md5('sudac'), 1995-05-09, 'Jaruge','095 856 7600','2.ŽNL'),
-(null, 'Lovro', 'Marić', 'lovrom@hns.hr', md5('sudac'), 1993-04-09, 'Bervaci','095 856 7600','1.ŽNL');
+insert into sudac(sifra, ime, prezime, email, lozinka, datum_rodjenja, mjesto, mobitel, liga, uloga) values
+(null, 'Ivo', 'Marić', 'ivom@hns.hr', md5('sudac'), 1995-04-09, 'Vrpolje','095 856 7600','1.ŽNL', 'sudac'),
+(null, 'Ante', 'Marjanović', 'antem@hns.hr', md5('sudac'), 1995-05-09, 'Jaruge','095 856 7600','2.ŽNL', 'sudac'),
+(null, 'Lovro', 'Marić', 'lovrom@hns.hr', md5('sudac'), 1993-04-09, 'Bervaci','095 856 7600','1.ŽNL', 'sudac');
 
-insert into delegat(sifra, ime, prezime, email, lozinka, datum_rodjenja, mjesto, mobitel, liga) values
-(null, 'Ivo', 'Marić', 'ivom@hns.hr', md5('sudac'), 1995-04-09, 'Vrpolje','095 856 7600','1.ŽNL'),
-(null, 'Ante', 'Marjanović', 'antem@hns.hr', md5('sudac'), 1995-05-09, 'Jaruge','095 856 7600','2.ŽNL'),
-(null, 'Karlo', 'Marić', 'lovrom@hns.hr', md5('sudac'), 1993-04-09, 'Bervaci','095 856 7600','1.ŽNL');
+insert into delegat(sifra, ime, prezime, email, lozinka, datum_rodjenja, mjesto, mobitel, liga, uloga) values
+(null, 'Ivica', 'Marić', 'ivo@hns.hr', md5('sudac'), 1995-04-09, 'Vrpolje','095 856 7600','1.ŽNL', 'delegat'),
+(null, 'Antimon', 'Marjanović', 'ante@hns.hr', md5('sudac'), 1995-05-09, 'Jaruge','095 856 7600','2.ŽNL', 'delegat'),
+(null, 'Roberto', 'Andrić', 'robi@hns.hr', md5('sudac'), 1993-04-09, 'Bervaci','095 856 7600','1.ŽNL', 'delegat');
 
 insert into liga(sifra, razina, smjer, kategorija) values
-(null, 1, '-', 'Seniori'),
+(null, 1, '', 'Seniori'),
 (null, 2, 'Zapad', 'Seniori'),
-(null, 1, 'Zapad', 'Juniori'),
-(null, 2, 'Istok', 'Seniori');
+(null, 1, '', 'Juniori'),
+(null, 2, 'Istok', 'Seniori'),
+(null, 2, 'Centar', 'Seniori'),
+(null, 2, 'Istok', 'Juniori'),
+(null, 2, 'Zapad', 'Juniori'),
+(null, 2, 'Centar', 'Juniori'),
+(null, 3, 'Zapad', 'Seniori'),
+(null, 3, 'Istok', 'Seniori'),
+(null, 3, 'Centar', 'Seniori'),
+(null, 1, '', 'Pioniri');
 
 insert into klub(sifra, naziv_kluba, mjesto, naziv_stadiona, boja_dresa_domaca, boja_dresa_gost, liga) values
-(null,'NK SLOGA','Jaruge', 'Stari Hrast', 'Plava', 'Žuta', 1),
-(null,'NK SLOGA','Vrpolje', 'Random', 'Plava', 'Žuta', 1),
-(null,'NK Raketa','Bervaci', 'mrtvi', 'Plava', 'Žuta', 1),
-(null,'NK SLOGA','Gundinci', 'Stari Hrast', 'Plava', 'Žuta', 1);
+(null,'NK TOMISLAV','Donji Andrijevci', 'Andrijevci', 'Bijela', 'Žuta', 1),
+(null,'NK OMLADINAC','Gornja Vrba', 'Random', 'Plava', 'Žuta', 1),
+(null,'NK MLADOST','Sibinj', 'Sibinj', 'Plava', 'Žuta', 1),
+(null,'NK SVAČIĆ','Stari Slatnik', 'Stari Hrast', 'Plava', 'Žuta', 1),
+(null,'NK ZADRUGAR','Oprisavci', 'Oprisavci', 'Plava', 'Žuta', 1),
+(null,'NK MLADOST','Sibinj', 'Sibinj', 'Plava', 'Žuta', 1),
+(null,'NK SIKIREVCI','Sikirevci', 'Sikirevci', 'Plava', 'Žuta', 1),
+(null,'NK SLAVONAC','Bukovlje', 'Bukovlje', 'Plava', 'Žuta', 1),
+(null,'NK BATRINA','Batrina', 'Batrina', 'Plava', 'Žuta', 1),
+(null,'NK SLAVONAC','Nova Kapela', 'Nova Kapela', 'Plava', 'Žuta', 1),
+(null,'NK OMLADINAC','Vrbova', 'Vrbova', 'Plava', 'Žuta', 1),
+(null,'NK BUDUĆNOST','Rešetari', 'Rešetari', 'Plava', 'Žuta', 1),
+(null,'NK ZVONIMIR','Donja Vrba', 'Sibinj', 'Plava', 'Žuta', 1),
+(null,'NK OMLADINAC','Staro Topolje', 'Sibinj', 'Plava', 'Žuta', 1),
+(null,'NK AMATER','SL. Brod', 'Sibinj', 'Plava', 'Žuta', 1);
 
 insert into igrac(sifra, broj_registracije, oib, ime, prezime, datum_rodjenja, mjesto_rodjenja, drzavljanstvo, broj_golova, klub) values
 (null, 555, 51000805082, 'Ivo', 'Marić', 1995-04-09, 'Osijek','Hrvatsko', 0, 1),

@@ -3,7 +3,7 @@
 			<div class="top-menu">
 				<div class="row">
 					<div class="col-xs-2">
-						<div id="fh5co-logo"><a href="<?php echo $putanjaAPP; ?>index.php" style="color: #66D37E;">FERITijada</a></div>
+						<div id="fh5co-logo"><a href="<?php echo $putanjaAPP; ?>index.php" style="color: #66D37E;">ŽNS BPŽ</a></div>
 					</div>
 					<div class="col-xs-10 text-right menu-1">
 						<ul>
@@ -21,11 +21,22 @@
 										stavkaIzbornika($putanjaAPP . "privatno/nadzornaPloca.php", "Nadzorna ploča"); }
 										
 									?>
-									
-									
-									<li>
-										<a href="<?php echo $putanjaAPP; ?>privatno/profil/profil.php">Moj profil</a>
-									</li>
+
+
+                                        <?php
+                                        if($_SESSION[$appID."autoriziran"]->uloga==="admin"){
+                                            stavkaIzbornika($putanjaAPP . "privatno/profil/profilSuca.php", "Moj profil"); }
+                                        ?>
+
+                                        <?php
+                                        if($_SESSION[$appID."autoriziran"]->uloga==="sudac"){
+                                            stavkaIzbornika($putanjaAPP . "privatno/profil/profilSuca.php", "Moj profil"); }
+                                        ?>
+
+                                        <?php
+                                        if($_SESSION[$appID."autoriziran"]->uloga==="delegat"){
+                                            stavkaIzbornika($putanjaAPP . "privatno/profil/profilDelegat.php", "Moj profil"); }
+                                        ?>
 									
 									<?php endif;
 									?>

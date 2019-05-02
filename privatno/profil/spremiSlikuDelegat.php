@@ -3,7 +3,7 @@ provjeraOvlasti();
 
 //dolazim s GET metodom s stranice index
 if(isset($_POST["sifra"])){
-	$ifp = fopen(  "../../images/suci/" . $_POST["sifra"] . ".png", "wb" );
+	$ifp = fopen(  "../../images/delegati/" . $_POST["sifra"] . ".png", "wb" );
     $data = explode( ',', $_POST["slika"] );
     fwrite( $ifp, base64_decode( $data[ 1 ] ) );
     fclose( $ifp ); 

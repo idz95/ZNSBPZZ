@@ -199,6 +199,16 @@ if(!isset($_GET["sifra"])){
 	</div>
 
 	<?php include_once "../../template/skripte.php"; ?>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://npmcdn.com/flatpickr/dist/l10n/hr.js"></script>
+    <script>
+        $("#pocetak").flatpickr({
+            locale: "hr",
+            minDate: "today",
+            enableTime:true
+
+        });
+    </script>
 	<script>
     <?php if(isset($greska["ime"])):?>	
     		setTimeout(function(){ $("#ime").focus(); },1000);	

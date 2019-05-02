@@ -21,20 +21,20 @@
 				<div class="col-md-8 col-md-offset-2">
 					<div class="row">
 						<div class="col-md-3 text-center">
-							<span class="fh5co-counter js-counter" data-from="0" data-to="1893" data-speed="5000" data-refresh-interval="50"></span>
-							<span class="fh5co-counter-label">Studenata FERIT-a</span>
+							<span class="fh5co-counter js-counter" data-from="0" data-to="159" data-speed="5000" data-refresh-interval="50"></span>
+							<span class="fh5co-counter-label">Klubova</span>
 						</div>
 						<div class="col-md-3 text-center">
-							<span class="fh5co-counter js-counter" data-from="0" data-to="1159" data-speed="5000" data-refresh-interval="50"></span>
-							<span class="fh5co-counter-label">Sportaša</span>
+							<span class="fh5co-counter js-counter" data-from="0" data-to="3890" data-speed="5000" data-refresh-interval="50"></span>
+							<span class="fh5co-counter-label">Igrača</span>
 						</div>
 						<div class="col-md-3 text-center">
-							<span class="fh5co-counter js-counter" data-from="0" data-to="876" data-speed="5000" data-refresh-interval="50"></span>
-							<span class="fh5co-counter-label">Nogometaša</span>
+							<span class="fh5co-counter js-counter" data-from="0" data-to="145" data-speed="5000" data-refresh-interval="50"></span>
+							<span class="fh5co-counter-label">Sudaca</span>
 						</div>
 						<div class="col-md-3 text-center">
-							<span class="fh5co-counter js-counter" data-from="0" data-to="432" data-speed="5000" data-refresh-interval="50"></span>
-							<span class="fh5co-counter-label">Na FERIT turniru</span>
+							<span class="fh5co-counter js-counter" data-from="0" data-to="82" data-speed="5000" data-refresh-interval="50"></span>
+							<span class="fh5co-counter-label">Delegata</span>
 						</div>
 
 					</div>

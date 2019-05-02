@@ -7,8 +7,8 @@
 							<i class="fas fa-futbol fa-10x" style="color: #66D37E;"></i>
 						</span>
 						<div class="desc">
-							<h3><a href="#">REZULTATI TURNIRA</a></h3>
-							<p>Rezultati dostupni odmah nakon završetka utakmice.</p>
+							<h3><a href="#">REZULTATI ŽNS BPŽ</a></h3>
+							<p>Rezultati dostupni odmah nakon završetka utakmica svih liga u ŽNS BPŽ.</p>
 						</div>
 					</div>
 				</div>
@@ -18,7 +18,7 @@
 							<i class="fas fa-map-marker-alt fa-10x" style="color: #66D37E;"></i>
 						</span>
 						<div class="desc">
-							<h3><a href="#">SREDNJIKA CENTAR SVIJETA</a></h3>
+							<h3><a href="#">SVE NA JEDNOM MJESTU</a></h3>
 							<p>Saznaj kada i protiv koga igrate!</p>
 						</div>
 					</div>
@@ -29,8 +29,8 @@
 							<i class="fas fa-bullhorn fa-10x" style="color: #66D37E;"></i>
 						</span>
 						<div class="desc">
-							<h3><a href="#">RAZGLASI DA JE AFTER  Q CLUBU!</a></h3>
-							<p>Ne zaboravi svima spomeniti da je after u Q clubu :D</p>
+							<h3><a href="#">GLASNO I FER BODRI SVOJ KLUB</a></h3>
+							<p>Slobodno podrži i prati svoj klub.</p>
 						</div>
 					</div>
 				</div>

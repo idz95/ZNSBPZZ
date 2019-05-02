@@ -102,7 +102,7 @@ if($_POST){
 						$rezultati = $izraz->fetchAll(PDO::FETCH_OBJ);
 						foreach ($rezultati as $red):
 						?>
-			        <option value="<?php echo $red->sifra; ?>"><?php echo $red->naziv . " " . $red->mjesto; ?></option>
+			        <option value="<?php echo $red->sifra; ?>"><?php echo $red->naziv_kluba . " " . $red->mjesto; ?></option>
 			        <?php  $domacin=$_POST["domacin"];  ?>
 			         <?php endforeach; ?>
      		 </select>
@@ -122,7 +122,7 @@ if($_POST){
 						$rezultati = $izraz->fetchAll(PDO::FETCH_OBJ);
 						foreach ($rezultati as $red):
 						?>
-        <option value="<?php echo $red->sifra; ?>"><?php echo $red->naziv . " " . $red->mjesto; ?></option>
+        <option value="<?php echo $red->sifra; ?>"><?php echo $red->naziv_kluba . " " . $red->mjesto; ?></option>
         <?php  $gost=$_POST["gost"];  ?>
          <?php endforeach; ?>
      		 </select>
@@ -137,7 +137,7 @@ if($_POST){
 						$rezultati = $izraz->fetchAll(PDO::FETCH_OBJ);
 						foreach ($rezultati as $red):
 						?>
-			        <option value="<?php echo $red->sifra; ?>"><?php echo $red->naziv . " " . $red->mjesto; ?></option>
+			        <option value="<?php echo $red->sifra; ?>"><?php echo $red->naziv_kluba . " " . $red->naziv_kluba; ?></option>
 			        <?php  $gost=$_POST["gost"];  ?>
 			         <?php endforeach; ?>
      		 </select>
@@ -150,12 +150,12 @@ if($_POST){
      <div class="form-group col-md-4">
      	<?php if(!isset($greska["pocetak"])): ?>
      	<label id="pocetak" name="pocetak">Datum i vrijeme
-        <input type="date" id="pocetak" name="pocetak" class="form-control" placeholder=""
+        <input type="datetime-local" id="pocetak" name="pocetak" class="form-control" placeholder=""
         value="<?php echo isset($_POST["pocetak"]) ? $_POST["pocetak"] : ""; ?>">
         </label>
         <?php else: ?>
         <label class="is-invalid-label">Datum i vrijeme
-      	 <input type="date" id="pocetak" name="pocetak" class="is-invalid-input"  aria-invalid aria-describedby="uuid"
+      	 <input type="datetime-local" id="pocetak" name="pocetak" class="is-invalid-input"  aria-invalid aria-describedby="uuid"
         value="<?php echo isset($_POST["pocetak"]) ? $_POST["pocetak"] : ""; ?>">
         <span class="form-error is-visible" id="uuid"><?php echo $greska["pocetak"]; ?></span>
         </label>

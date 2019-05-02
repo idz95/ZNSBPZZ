@@ -23,12 +23,12 @@ provjeraOvlasti();
 			
 			<?php 
 								
-								if(file_exists("../../images/suci/" . $_SESSION[$appID."autoriziran"]->sifra . ".png")):
+								if(file_exists("../../images/delegati/" . $_SESSION[$appID."autoriziran"]->sifra . ".png")):
 								
 								?>
-								<img id="staro" style="max-width: 300px; max-height: 400px;" src="<?php echo $putanjaAPP; ?>images/suci/<?php echo $_SESSION[$appID."autoriziran"]->sifra ?>.png">
+								<img id="staro" style="max-width: 300px; max-height: 400px;" src="<?php echo $putanjaAPP; ?>images/delegati/<?php echo $_SESSION[$appID."autoriziran"]->sifra ?>.png">
 								<?php else: ?>
-								<img style="max-width: 300px; max-height: 400px;" src="<?php echo $putanjaAPP ?>images/suci/default.png" />
+								<img style="max-width: 300px; max-height: 400px;" src="<?php echo $putanjaAPP ?>images/delegati/default.png" />
 									<?php  endif;
 									?>
 			
@@ -36,7 +36,7 @@ provjeraOvlasti();
 		<div class="col-md-8 text-center animate-box">
 			
 					    
-				<img id="image" src="<?php echo $putanjaAPP . "images/suci/default.png"; ?>" alt="Picture">
+				<img id="image" src="<?php echo $putanjaAPP . "images/delegati/default.png"; ?>" alt="Picture">
 					    
 			
 				
@@ -44,7 +44,7 @@ provjeraOvlasti();
             
 			<a class="success button" href="#" id="spremi">Spremi</a>
 			
-			<a class="success button" href="profilSuca.php">Završi</a>
+			<a class="success button" href="profilDelegat.php">Završi</a>
 			
 		</div>
 	</div><!-- END container-wrap -->
@@ -63,7 +63,7 @@ provjeraOvlasti();
 			
 		  	$.ajax({
 			  type: "POST",
-			  url: "spremiSliku.php",
+			  url: "spremiSlikuDelegat.php",
 			  data: {sifra: <?php echo $_GET["sifra"] ?>, slika: croppng},
 			  success: function(status){
 			  	if(status==="OK"){

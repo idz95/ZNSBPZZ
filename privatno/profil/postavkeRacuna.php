@@ -5,9 +5,25 @@ if(!isset($_GET["sifra"])){
 	
 	if(isset($_POST["sifra"])){
 
-		$izraz=$veza->prepare("update sudac set ime=:ime, prezime=:prezime, 
-		email=:email, lozinka=md5(:lozinka), mobitel=:mobitel where sifra=:sifra;");
-		$izraz->execute($_POST);
+        if($_SESSION[$appID."autoriziran"]->uloga==="admin"){
+            $izraz=$veza->prepare("update admin set ime=:ime, prezime=:prezime, 
+		  email=:email, lozinka=md5(:lozinka), uloga=:uloga where sifra=:sifra;");
+            $izraz->execute($_POST);
+            header("location: profilSuca.php");
+            }
+        if($_SESSION[$appID."autoriziran"]->uloga==="sudac"){
+            $izraz=$veza->prepare("update sudac set ime=:ime, prezime=:prezime, 
+		email=:email, lozinka=md5(:lozinka), uloga=:uloga where sifra=:sifra;");
+            $izraz->execute($_POST);
+            header("location: profilSuca.php");
+        }
+        if($_SESSION[$appID."autoriziran"]->uloga==="delegat"){
+            $izraz=$veza->prepare("update delegat set ime=:ime, prezime=:prezime, 
+		  email=:email, lozinka=md5(:lozinka), uloga=:uloga where sifra=:sifra;");
+            $izraz->execute($_POST);
+            header("location: profilSuca.php");
+        }
+
 		
 		}else{
 		header("location: " . $putanjaAPP . "logout.php");
@@ -52,11 +68,11 @@ if(!isset($_GET["sifra"])){
 				<div class="col-md-4 text-center animate-box">
 					
 												<?php
-												if(file_exists("../../images/sudac/" . $_SESSION[$appID."autoriziran"]->sifra . ".png")):
+												if(file_exists("../../images/suci/" . $_SESSION[$appID."autoriziran"]->sifra . ".png")):
 												?>
 												<img style="max-width: 300px; max-height: 400px;" src="<?php echo $putanjaAPP; ?>images/suci/<?php echo $_SESSION[$appID."autoriziran"]->sifra ?>.png">
 												<?php else: ?>
-												<img style="max-width: 300px; max-height: 400px;" src="<?php echo $putanjaAPP ?>images/default.png" />
+												<img style="max-width: 300px; max-height: 400px;" src="<?php echo $putanjaAPP ?>images/suci/default.png" />
 												<?php
 												endif;
 												?>
@@ -64,7 +80,11 @@ if(!isset($_GET["sifra"])){
 					<div class="list-group">
 						<?php  if($_SESSION[$appID."autoriziran"]->uloga==="sudac"): ?>
 						<a href="utakmice.php" class="list-group-item">Moje utakmice</a>
-						<?php  endif; ?>
+                        <?php  endif; ?>
+                        <?php  if($_SESSION[$appID."autoriziran"]->uloga==="delegat"): ?>
+                            <a href="utakmiceDelegat.php" class="list-group-item">Moje utakmice</a>
+                        <?php  endif; ?>
+
 						<a href="postavkeRacuna.php?sifra=<?php echo $_SESSION[$appID."autoriziran"]->sifra ?>" class="list-group-item">Postavke računa</a>
 						<a href="promijeniSliku.php?sifra=<?php echo $_SESSION[$appID."autoriziran"]->sifra ?>" class="list-group-item">Promijeni sliku</a>
 								
@@ -127,12 +147,12 @@ if(!isset($_GET["sifra"])){
 					
 					<div class="panel panel-info" style="margin-bottom: 5px;">
 						<div class="panel-heading" style="padding: 5px;">
-							<h3 class="panel-title"><label for="passwordConfirm" class="control-label panel-title">Kontakt telefon</label></h3>
+							<h3 class="panel-title"><label for="passwordConfirm" class="control-label panel-title">Uloga</label></h3>
 						</div>
 						<div class="panel-body" style="padding: 5px;">
 							<div class="form-group" style="margin-bottom: 2px; font-size: 20px;">
-								<input class="form-control" type="text" id="mobitel" name="mobitel" placeholder="095 888 8888" 
-								value="<?php echo isset($_SESSION[$appID."autoriziran"]->mobitel) ? $_SESSION[$appID."autoriziran"]->mobitel : ""; ?>" 
+								<input class="form-control" type="text" id="uloga" name="uloga" placeholder="Uloga"
+								value="<?php echo isset($_SESSION[$appID."autoriziran"]->uloga) ? $_SESSION[$appID."autoriziran"]->uloga : ""; ?>"
 								style="text-align: center; font-size: 55px;">
 							</div>
 						</div>

@@ -1,9 +1,9 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>FERIT TURNIR</title>
+<title>ŽNS BPŽ</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Aplikacija za praćenje rezultata na FERIT malonogometnom turniru!" />
-<meta name="keywords" content="ferit" />
+<meta name="description" content="Aplikacija za praćenje rezultata Županijskog Nogometnog Saveza Brodsko-posavske županije" />
+<meta name="keywords" content="znsbpz" />
 <meta name="author" content="" />
 
 
@@ -12,7 +12,7 @@
 <meta property="og:type" content="application" />
 <meta property="og:url" content="http://ferit.byethost22.com" />
 <meta property="og:image" content="http://ferit.byethost22.com/images/marac.jpg" />
-<meta property="og:description" content="Aplikacija za praćenje rezultata na FERIT malonogometnom turniru!" />
+<meta property="og:description" content="Aplikacija za praćenje rezultata Županijskog Nogometnog Saveza Brodsko-posavske županije" />
 
 
 <link href="https://fonts.googleapis.com/css?family=Oxygen:300,400" rel="stylesheet">

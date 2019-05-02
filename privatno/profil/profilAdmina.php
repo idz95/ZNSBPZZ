@@ -1,7 +1,7 @@
 <?php include_once '../../konfiguracija.php'; 
 provjeraOvlasti();
 
-$izraz = $veza->prepare("select * from sudac where sifra = :sifra;");
+$izraz = $veza->prepare("select * from admin where sifra = :sifra;");
 $izraz->execute(array(
 	"sifra" => $_SESSION[$appID."autoriziran"]->sifra));
 	$rezultati = $izraz->fetch(PDO::FETCH_OBJ);
@@ -81,34 +81,8 @@ $izraz->execute(array(
 							</div>
 						</div>
 					</div>
-					
-					<?php  if($_SESSION[$appID."autoriziran"]->uloga==="sudac"): ?>
-					<div class="panel panel-info">
-						<div class="panel-heading" style="padding: 5px;">
-							<h3 class="panel-title"><label for="passwordConfirm" class="control-label panel-title">Kontakt telefon</label></h3>
-						</div>
-						<div class="panel-body" style="padding: 5px;">
-							<div class="form-group" style="margin-bottom: 2px; font-size: 20px;">
-								<?php echo $_SESSION[$appID."autoriziran"]->mobitel; ?>
-							</div>
-						</div>
-					</div>
-					
-					
-					
-					<div class="panel panel-info">
-						<div class="panel-heading" style="padding: 5px;">
-							<h3 class="panel-title"><label for="passwordConfirm" class="control-label panel-title">Sport</label></h3>
-						</div>
-						
-						
-						<div class="panel-body" style="padding: 5px;">
-							<div class="form-group" style="margin-bottom: 2px; font-size: 20px;">
-								<?php echo $_SESSION[$appID."autoriziran"]->sport; ?>
-							</div>
-						</div>
-					</div>
-					<?php  endif; ?>
+
+
 					
 				</div>
 				
