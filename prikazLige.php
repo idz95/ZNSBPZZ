@@ -52,7 +52,7 @@ if(!isset($_GET["sifra"])){
                         foreach ($rezultati as $red):
                             ?>
                             <tr>
-                                <td><?php echo $red->naziv_kluba . " " . $red->mjesto; ?></td>
+                                <td><a href="profilEkipe.php?sifra=<?php echo $red->sifra; ?>"><?php echo $red->naziv_kluba . " " . $red->mjesto; ?></a></td>
                             </tr>
                         <?php endforeach; ?>
                         </tbody>

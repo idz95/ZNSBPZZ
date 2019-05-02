@@ -5,39 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6b44dde2-9b7b-493e-ad3a-90353b1490c7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/modal.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/privatno/profil/delegat_potvrda.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/privatno/profil/profilDelegat.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/privatno/profil/profilSuca.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/privatno/profil/promijeniSlikuDelegat.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/privatno/profil/spremiSlikuDelegat.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/privatno/profil/traziDetalje.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/privatno/profil/utakmiceDelegat.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/traziDetalje.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/autoriziraj.php" beforeDir="false" afterPath="$PROJECT_DIR$/autoriziraj.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/suci/1.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/suci/1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/suci/14.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/suci/7.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/suci/default.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/suci/default.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/suci/miro.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/prikazLige.php" beforeDir="false" afterPath="$PROJECT_DIR$/prikazLige.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/privatno/igrac/dodaj.php" beforeDir="false" afterPath="$PROJECT_DIR$/privatno/igrac/dodaj.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/privatno/igrac/promjena.php" beforeDir="false" afterPath="$PROJECT_DIR$/privatno/igrac/promjena.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/privatno/profil/postavkeRacuna.php" beforeDir="false" afterPath="$PROJECT_DIR$/privatno/profil/postavkeRacuna.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/privatno/profil/profil.php" beforeDir="false" afterPath="$PROJECT_DIR$/privatno/profil/profilAdmina.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/privatno/profil/promijeniSliku.php" beforeDir="false" afterPath="$PROJECT_DIR$/privatno/profil/promijeniSliku.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/privatno/profil/spremiSliku.php" beforeDir="false" afterPath="$PROJECT_DIR$/privatno/profil/spremiSliku.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/privatno/profil/unesiRezultat.php" beforeDir="false" afterPath="$PROJECT_DIR$/privatno/profil/unesiRezultat.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/privatno/profil/utakmice.php" beforeDir="false" afterPath="$PROJECT_DIR$/privatno/profil/utakmice.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/privatno/upravljanje/dodavanjeUtakmice.php" beforeDir="false" afterPath="$PROJECT_DIR$/privatno/upravljanje/dodavanjeUtakmice.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/privatno/upravljanje/promjenaNadolazece.php" beforeDir="false" afterPath="$PROJECT_DIR$/privatno/upravljanje/promjenaNadolazece.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/head.php" beforeDir="false" afterPath="$PROJECT_DIR$/template/head.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/indexslider.php" beforeDir="false" afterPath="$PROJECT_DIR$/template/indexslider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/izbornik.php" beforeDir="false" afterPath="$PROJECT_DIR$/template/izbornik.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/podnozje.php" beforeDir="false" afterPath="$PROJECT_DIR$/template/podnozje.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/znsbpz.sql" beforeDir="false" afterPath="$PROJECT_DIR$/znsbpz.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profilEkipe.php" beforeDir="false" afterPath="$PROJECT_DIR$/profilEkipe.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -56,14 +25,14 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/prikazLige.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="642">
-              <caret line="232" column="104" selection-start-line="232" selection-start-column="104" selection-end-line="232" selection-end-column="104" />
+            <state relative-caret-position="622">
+              <caret line="54" column="144" selection-start-line="54" selection-start-column="144" selection-end-line="54" selection-end-column="144" />
               <folding>
-                <element signature="n#style#0;n#i#0;n#h5#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#i#1;n#h5#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#i#0;n#p#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#i#1;n#p#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#i#2;n#p#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#i#0;n#a#0;n#td#4;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#i#0;n#a#0;n#td#5;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -78,6 +47,24 @@
                 <element signature="n#style#0;n#i#0;n#a#1;n#td#5;n#tr#0;n#tbody#0;n#table#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#i#0;n#a#2;n#td#5;n#tr#0;n#tbody#0;n#table#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/profilEkipe.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="600">
+              <caret line="42" column="24" lean-forward="true" selection-start-line="42" selection-start-column="24" selection-end-line="42" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/privatno/igrac/igrac.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="409">
+              <caret line="80" column="92" selection-start-line="80" selection-start-column="47" selection-end-line="80" selection-end-column="92" />
             </state>
           </provider>
         </entry>
@@ -99,7 +86,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/privatno/klub/kontrole.php" />
         <option value="$PROJECT_DIR$/privatno/klub/promjena.php" />
         <option value="$PROJECT_DIR$/privatno/sudac/kontrole.php" />
         <option value="$PROJECT_DIR$/privatno/delegat/kontrole.php" />
@@ -150,6 +136,7 @@
         <option value="$PROJECT_DIR$/template/izbornik.php" />
         <option value="$PROJECT_DIR$/template/podnozje.php" />
         <option value="$PROJECT_DIR$/prikazLige.php" />
+        <option value="$PROJECT_DIR$/profilEkipe.php" />
       </list>
     </option>
   </component>
@@ -171,6 +158,17 @@
             <path>
               <item name="ZNSBPZ" type="b2602c69:ProjectViewProjectNode" />
               <item name="ZNSBPZ" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ZNSBPZ" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ZNSBPZ" type="462c0819:PsiDirectoryNode" />
+              <item name="privatno" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ZNSBPZ" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ZNSBPZ" type="462c0819:PsiDirectoryNode" />
+              <item name="privatno" type="462c0819:PsiDirectoryNode" />
+              <item name="igrac" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -216,12 +214,12 @@
       <workItem from="1554415964647" duration="5541000" />
       <workItem from="1555507799198" duration="27148000" />
       <workItem from="1556721249901" duration="22181000" />
-      <workItem from="1556807617492" duration="7266000" />
+      <workItem from="1556807617492" duration="8740000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="62136000" />
+    <option name="totallyTimeSpent" value="63610000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1056" extended-state="6" />
@@ -273,7 +271,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/privatno/upravljanje/eraDijagram.php" />
     <entry file="file://$PROJECT_DIR$/privatno/upravljanje/kontrole.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -596,13 +593,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/privatno/igrac/igrac.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="549">
-          <caret line="87" lean-forward="true" selection-start-line="87" selection-end-line="87" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lige.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1840">
@@ -610,13 +600,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/privatno/igrac/igrac.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="409">
+          <caret line="80" column="92" selection-start-line="80" selection-start-column="47" selection-end-line="80" selection-end-column="92" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/prikazLige.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="642">
-          <caret line="232" column="104" selection-start-line="232" selection-start-column="104" selection-end-line="232" selection-end-column="104" />
+        <state relative-caret-position="622">
+          <caret line="54" column="144" selection-start-line="54" selection-start-column="144" selection-end-line="54" selection-end-column="144" />
           <folding>
-            <element signature="n#style#0;n#i#0;n#h5#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#i#1;n#h5#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#p#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#1;n#p#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#i#2;n#p#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#i#0;n#a#0;n#td#4;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#i#0;n#a#0;n#td#5;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -631,6 +628,13 @@
             <element signature="n#style#0;n#i#0;n#a#1;n#td#5;n#tr#0;n#tbody#0;n#table#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#i#0;n#a#2;n#td#5;n#tr#0;n#tbody#0;n#table#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/profilEkipe.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="42" column="24" lean-forward="true" selection-start-line="42" selection-start-column="24" selection-end-line="42" selection-end-column="24" />
         </state>
       </provider>
     </entry>

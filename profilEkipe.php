@@ -1,6 +1,6 @@
 <?php include_once 'konfiguracija.php'; 
 
-	$izraz=$veza->prepare("select * from fakultet where sifra=:sifra");
+	$izraz=$veza->prepare("select * from klub where sifra=:sifra");
 	$izraz->execute($_GET);
 	$_POST=$izraz->fetch(PDO::FETCH_ASSOC);
 	
@@ -29,8 +29,11 @@
 		</div>
 
 		<div id="fh5co-work">	
-		<h3 style="text-align: center;">Popis igrača <?php echo $_POST["naziv"]; ?></h3>	
-		
+		<h3 style="text-align: center;"><?php echo $_POST["naziv_kluba"] . " " . $_POST["mjesto"]; ?></h3>
+		<h6><b>Naziv stadiona: </b><?php echo $_POST["naziv_stadiona"]; ?></h6>
+            <h6><b>Boja dresova domaća:: </b><?php echo $_POST["boja_dresa_domaca"]; ?></h6>
+            <h6><b>Boja dresova gostujuća: </b><?php echo $_POST["boja_dresa_gost"]; ?></h6>
+            <h4>Popis igrača:</h4>
 		<table class="table">
 						<thead>
 							<tr>
@@ -38,7 +41,7 @@
 								<?php  
 								$izraz = $veza->prepare("
 						
-									select * from igrac where fakultet=$sifra;
+									select * from igrac where klub=$sifra;
 									");
 								
 								
@@ -47,9 +50,9 @@
 								?>
 								
 								<th scope="col">Ime i prezime</th>
-								<th scope="col">Godina na FERIT-u</th>
-								<th scope="col">Status veze</th>
-								<th scope="col">Statistika igrača</th>
+								<th scope="col">Broj registracije</th>
+								<th scope="col">Datum rođenja</th>
+
 
 							</tr>
 						</thead>
@@ -61,14 +64,8 @@
 							
 							<tr>
 								<td><?php echo $red->ime . " " . $red->prezime; ?></td>
-								<td><?php echo $red->godina; ?>. godina</td>
-								<td><?php echo $red->status; ?></td>
-							
-								
-								<td>
-									<a href="statistika.php?sifra=<?php echo $red->sifra ?>"><i class="fas fa-info-circle fa-2x"></i></a>
-								</td>
-
+								<td><?php echo $red->broj_registracije; ?></td>
+								<td><?php echo date("d.m.Y.",strtotime($red->datum_rodjenja)); ?></td>
 							</tr>
 							<?php endforeach; ?>
 						</tbody>
