@@ -25,13 +25,14 @@ provjeraOvlasti();
 				</div>
 			</div>
 			<div class="row">
-						<div class="col-md-4 text-center animate-box">
+						<div class="col-md-6 text-center animate-box">
 							
 								<a href="#" class="list-group-item active">Dodavanje komponenti! </a>
 								<a href="upravljanje/dodavanjeUtakmice.php" class="list-group-item">Sportska utakmica</a>
 								<a href="klub/dodaj.php" class="list-group-item">Ekipa</a>
 								<a href="sudac/dodaj.php" class="list-group-item">Sudac</a>
 								<a href="igrac/dodaj.php" class="list-group-item">Igrač</a>
+                                <a href="delegat/dodaj.php" class="list-group-item">Delegat</a>
 								
 
 							
@@ -39,7 +40,7 @@ provjeraOvlasti();
 							
 
 						</div>
-						<div class="col-md-4 text-center animate-box">
+						<div class="col-md-6 text-center animate-box">
 						
 							<a href="#" class="list-group-item active">UPRAVLJANJE! </a>
 							
@@ -49,6 +50,7 @@ provjeraOvlasti();
                             <a href="delegat/delegati.php" class="list-group-item">Delegati</a>
 							<a href="liga/lige.php" class="list-group-item">Lige</a>
 							<a href="upravljanje/nadolazeceUtakmice.php" class="list-group-item">Nadolazeće utakmice</a>
+                            <a href="upravljanje/promjenaUtakmice.php" class="list-group-item">Odigrane utakmice</a>
 
 						
 						</div>

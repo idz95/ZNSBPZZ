@@ -33,24 +33,24 @@ $date=date("Y-m-d H:i");
 					$uvjet = "%" . (isset($_GET["uvjet"]) ? $_GET["uvjet"] : "") . "%";
 					
 					$izraz = $veza->prepare("
-					select count(a.sifra), b.sifra, b.ime, b.prezime, c.naziv, d.naziv as domacin, e.naziv as gost from utakmica a
+					select count(a.sifra), b.sifra, b.ime, b.prezime, c.razina, c.smjer, c.kategorija, d.naziv_kluba as domacin, e.naziv_kluba as gost from utakmica a
 						 inner join sudac b on a.sudac=b.sifra
-                        inner join sport c on a.sport=c.sifra
-                        inner join fakultet d on a.domacin=d.sifra
-                        inner join fakultet e on a.gost=e.sifra
-                        where concat(b.ime, b.prezime, c.naziv, d.naziv, e.naziv) like :uvjet;");
+                        inner join liga c on a.liga=c.sifra
+                        inner join klub d on a.domacin=d.sifra
+                        inner join klub e on a.gost=e.sifra
+                        where concat(b.ime, b.prezime, c.razina, d.naziv_kluba, e.naziv_kluba) like :uvjet;");
 
 					$izraz->execute(array("uvjet"=>$uvjet));
 			
 					
 					$izraz = $veza->prepare("
-						select a.sifra as sifraUtakmice, a.mjesto, a.domacin_score, a.gost_score, a.pocetak, b.ime, b.prezime, c.naziv, d.naziv as domacin, e.naziv as gost from utakmica a
+						select a.sifra as sifraUtakmice, a.mjesto, a.domacin_score, a.gost_score, a.pocetak,a.kolo, b.ime, b.prezime, c.razina, c.smjer, c.kategorija, d.naziv_kluba as domacin, e.naziv_kluba as gost from utakmica a
 						 inner join sudac b on a.sudac=b.sifra
-                        inner join sport c on a.sport=c.sifra
-                        inner join fakultet d on a.domacin=d.sifra
-                        inner join fakultet e on a.gost=e.sifra
-                        where concat(b.ime, b.prezime, c.naziv, d.naziv, e.naziv) like :uvjet and pocetak < '$date'
-						order by c.naziv;
+                        inner join liga c on a.liga=c.sifra
+                        inner join klub d on a.domacin=d.sifra
+                        inner join klub e on a.gost=e.sifra
+                        where concat(b.ime, b.prezime, c.razina, d.naziv_kluba, e.naziv_kluba) like :uvjet and pocetak < current_date 
+						order by a.pocetak;
 						");
 					
 					$izraz->bindParam("uvjet", $uvjet);
@@ -66,8 +66,7 @@ $date=date("Y-m-d H:i");
 								<th scope="col">Domacin</th>
 								<th scope="col">Gost</th>
 								<th scope="col">Datum</th>
-								<th scope="col">Lokacija</th>
-								<th scope="col">Sport</th>
+								<th scope="col">Liga</th>
 								<th scope="col">Sudac</th>
 								<th scope="col">Rezultat</th>
 								<th scope="col">Akcija</th>
@@ -86,8 +85,7 @@ $date=date("Y-m-d H:i");
 								<td><?php echo $red->domacin; ?></td>
 								<td><?php echo $red->gost; ?></td>
 								<td><?php echo date("d.m.Y. G:i",strtotime($red->pocetak)); ?></td>
-								<td><?php echo $red->mjesto; ?></td>
-								<td><?php echo $red->naziv; ?></td>
+								<td><?php echo $red->razina . ".ŽNL " . $red->smjer . " " . $red->kategorija; ?></td>
 								<td><?php echo $red->ime . " " . $red->prezime; ?></td>
 								<td><?php echo $red->domacin_score . " : " . $red->gost_score; ?></td>
 							

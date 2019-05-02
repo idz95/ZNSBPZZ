@@ -227,50 +227,31 @@ $id=$_SESSION[$appID."autoriziran"]->sifra;
             <div class="modal-header">
 
                 <div class="panel panel-info">
-                    <div class="panel-heading" style="padding: 5px;">
-                        <h3 id="detalji" class="modalNaslov"><label for="passwordConfirm" class="control-label panel-title"></label></h3>
-                    </div>
+
+                    <h5 id="detalji" class="modalNaslov" style="align-content: center;"><label for="passwordConfirm" class="control-label panel-title"></label></h5>
+
                 </div>
             </div>
 
             <div class="modal-body" >
 
                 <div class="col-md-12" style="text-align: left;">
-                    <h4 id="sport" class="modalOdgovor"></h4>
-                    <h4 id="utakmicaIzmedu" class="modalOdgovor"></h4>
-                    <h4 id="rezultat" class="modalOdgovor"></h4>
-                    <h4 id="sudac" class="modalOdgovor"></h4>
-                </div>
-
-
-                <div class="col-md-4" style="text-align: left;">
-                    <h4 id="datum" class="modalOdgovor"></h4>
-                    <h4 id="pocetak" class="modalOdgovor"></h4>
-
-
-                </div>
-                <div class="col-md-8">
-
-                    <div class="panel panel-info">
-                        <div class="panel-heading" style="padding: 5px;">
-                            <h3 class="panel-title"><label for="passwordConfirm" class="control-label panel-title">OPIS UTAKMICE</label></h3>
-                        </div>
-                        <div class="panel-body" style="padding: 5px;">
-                            <div class="form-group" style="margin-bottom: 2px; font-size: 20px;">
-                                <p id="opis"></p>
-                            </div>
-                        </div>
+                    <div class="list-group-item">
+                        <b><p id="liga" class="list-group-item-success"></p></b>
+                        <b><p id="utakmicaIzmedu" class="list-group-item-success"></p></b>
+                        <b>Rezultat:<p id="rezultat" class="list-group-item-success"></p></b>
+                        <b>Sudac:<p id="sudac" class="list-group-item-success"></p></b>
+                        <b>Datum i vrijeme:<p id="datum" class="list-group-item-success"></p>
+                            <b>Mjesto:<p id="mjesto" class="list-group-item-success"></p>
+                                <b>Opis:<p id="opis" class="list-group-item-success"></p>
                     </div>
-
                 </div>
             </div>
-
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
 
-      
     </div>
   </div>  
 
@@ -290,15 +271,20 @@ $id=$_SESSION[$appID."autoriziran"]->sifra;
 
                     $("#utakmicaIzmedu").html("");
                     $("#rezultat").html("");
-                    $("#pocetak").html("");
+                    $("#datum").html("");
+                    $("#mjesto").html("");
                     $("#opis").html("");
+                    $("#sudac").html("");
 
                     var niz = jQuery.parseJSON(vratioServer);
                     $( niz ).each(function(index,objekt) {
-                        $("#utakmicaIzmedu").append(objekt.domacin  + " - "  + objekt.gost);
+                        $("#utakmicaIzmedu").append(objekt.domacin + " - "  + objekt.gost);
                         $("#rezultat").append(objekt.domacin_score  + " : "  + objekt.gost_score);
                         $("#datum").append(objekt.pocetak);
+                        $("#mjesto").append(objekt.mjesto);
                         $("#opis").append(objekt.opis);
+                        $("#sudac").append(objekt.ime + " " + objekt.prezime);
+                        $("#liga").append(objekt.razina + ".ŽNL " + objekt.smjer + " " + objekt.kategorija);
 
                     });
 

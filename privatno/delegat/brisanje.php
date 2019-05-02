@@ -24,54 +24,71 @@ if(!isset($_GET["sifra"])){
 }
 
 $izraz=$veza->prepare("
-	select a.*, b.naziv as domaci, c.naziv as gosti, d.naziv from utakmica a 
-    inner join fakultet b on a.domacin=b.sifra
-    inner join fakultet c on a.gost=c.sifra
-    inner join sport d on a.sport=d.sifra
-    where sudac=:sifra;
+	select a.*, b.naziv_kluba as domaci, c.naziv_kluba as gosti, d.razina, d.smjer, d.kategorija from utakmica a 
+    inner join klub b on a.domacin=b.sifra
+    inner join klub c on a.gost=c.sifra
+    inner join liga d on a.liga=d.sifra
+    where delegat=:sifra;
 						");
-	$izraz->execute($_GET);
-	$rezultati=$izraz->fetchAll(PDO::FETCH_OBJ);
-
+$izraz->execute($_GET);
+$rezultati=$izraz->fetchAll(PDO::FETCH_OBJ);
 ?>
 
 <!DOCTYPE HTML>
 <html>
-	<head>
-		<?php include_once "../../template/head.php"; ?>
-	</head>
-	<body>
-		
-	<div class="fh5co-loader"></div>
-	
-	<div id="page">
-		
-	<?php include_once "../../template/izbornik.php"; ?>
-	<div class="container-wrap">
-	
-		<div id="fh5co-work">
-			<a href="delegati.php" style="font-weight: bold; color: red;"><i style="color: red;" class="fas fa-chevron-circle-left fa-2x"></i> Nadzorna ploča</a>
-			
-			<h3 style="text-align: center;">Nemoguće obrisati suca jer sudi na utakmicama:</h3>				
-			<ul>
-					<?php 
-					foreach ($rezultati as $red) {
-						echo "<li><h4>" . $red->domaci . " : " . $red->gosti . "------" . $red->naziv . "</h4></li>";
-					}
-					?>
-			</ul>
-		
-		</div>
-			
-		
-	</div><!-- END container-wrap -->
+<head>
+    <?php include_once "../../template/head.php"; ?>
+</head>
+<body>
 
-	<?php include_once "../../template/podnozje.php"; ?>
-	</div>
+<div class="fh5co-loader"></div>
 
-	<?php include_once "../../template/skripte.php"; ?>
+<div id="page">
 
-	</body>
+    <?php include_once "../../template/izbornik.php"; ?>
+    <div class="container-wrap">
+
+        <div id="fh5co-work">
+            <a href="delegati.php" style="font-weight: bold; color: red;"><i style="color: red;" class="fas fa-chevron-circle-left fa-2x"></i> Nadzorna ploča</a>
+
+            <h3 style="text-align: center;">Nemoguće obrisati delegata jer sudi na utakmicama:</h3>
+
+            <table class="table">
+                <thead>
+                <tr>
+
+                    <th scope="col">Utakmica</th>
+                    <th scope="col">Liga</th>
+                    <th scope="col">Datum i vrijeme</th>
+
+
+                </tr>
+                </thead>
+                <tbody>
+                <?php
+                foreach ($rezultati as $red):
+                    ?>
+                    <tr>
+                        <td><?php echo $red->domaci . " : " . $red->gosti; ?></td>
+                        <td><?php echo $red->razina . ".ŽNL" . $red->smjer; ?></td>
+                        <td><?php echo date("d.m.Y. G:i",strtotime($red->pocetak)); ?></td>
+                    </tr>
+                <?php endforeach; ?>
+                </tbody>
+            </table>
+
+
+        </div>
+
+
+    </div><!-- END container-wrap -->
+
+    <?php include_once "../../template/podnozje.php"; ?>
+</div>
+
+<?php include_once "../../template/skripte.php"; ?>
+
+</body>
 </html>
 
 

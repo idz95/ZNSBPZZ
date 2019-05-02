@@ -91,7 +91,7 @@ if($_POST){
 
               <div class="form-group col-md-4">
                   <?php if(!isset($greska["broj_registracije"])): ?>
-                      <label>Broj_registracije
+                      <label>Broj registracije
                           <input class="form-control"  type="number" id="broj_registracije" name="broj_registracije" placeholder=""
                                  value="<?php echo isset($_POST["broj_registracije"]) ? $_POST["broj_registracije"] : ""; ?>">
                       </label>

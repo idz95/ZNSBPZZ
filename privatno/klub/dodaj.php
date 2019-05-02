@@ -86,7 +86,7 @@ if($_POST){
                                         echo "selected=\"selected\"";
                                     }
                                     ?>
-                                        value="<?php echo $red->sifra ?>"><?php echo $red->razina . ". " . $red->smjer . " " . $red->kategorija; ?></option>
+                                        value="<?php echo $red->sifra ?>"><?php echo $red->razina . ".ŽNL " . $red->smjer . " " . $red->kategorija; ?></option>
                             <?php endforeach;?>
                         </select>
                     </div>

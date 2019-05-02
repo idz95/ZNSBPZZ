@@ -90,10 +90,12 @@ if(!isset($_GET["sifra"])){
 
                                 <?php
                                 $izraz = $veza->prepare("
-						          select a.sifra as sifraUtakmice, a.pocetak, a.kolo, a.domacin_score, a.gost_score, a.opis, a.delegat_potvrdio, b.naziv_kluba as domacin, b.mjesto as domacin_mjesto, c.naziv_kluba as gost, c.mjesto as gost_mjesto, d.sifra from utakmica a
+						          select a.sifra as sifraUtakmice, a.pocetak, a.mjesto, a.kolo, a.domacin_score, a.delegat_potvrdio, a.gost_score, a.opis, b.naziv_kluba as domacin, b.mjesto as domacin_mjesto, c.naziv_kluba as gost, c.mjesto as gost_mjesto, d.sifra, d.razina, d.smjer, d.kategorija, e.ime, e.prezime from utakmica a
 						          inner join klub b on a.domacin=b.sifra
 						          inner join klub c on a.gost=c.sifra
 						          inner join liga d on a.liga=d.sifra
+						          inner join sudac e on a.sudac=e.sifra
+						          inner join delegat f on a.delegat=f.sifra
 						          where a.kolo=1 and d.sifra=$liga
 						         order by pocetak desc;
 						");
@@ -151,10 +153,12 @@ if(!isset($_GET["sifra"])){
 
                                 <?php
                                 $izraz = $veza->prepare("
-						          select a.sifra as sifraUtakmice, a.pocetak, a.kolo, a.domacin_score, a.gost_score, a.delegat_potvrdio, a.opis, b.naziv_kluba as domacin, b.mjesto as domacin_mjesto, c.naziv_kluba as gost, c.mjesto as gost_mjesto, d.sifra from utakmica a
+						          select a.sifra as sifraUtakmice, a.pocetak, a.mjesto, a.kolo, a.domacin_score, a.delegat_potvrdio, a.gost_score, a.opis, b.naziv_kluba as domacin, b.mjesto as domacin_mjesto, c.naziv_kluba as gost, c.mjesto as gost_mjesto, d.sifra, d.razina, d.smjer, d.kategorija, e.ime, e.prezime from utakmica a
 						          inner join klub b on a.domacin=b.sifra
 						          inner join klub c on a.gost=c.sifra
 						          inner join liga d on a.liga=d.sifra
+						          inner join sudac e on a.sudac=e.sifra
+						          inner join delegat f on a.delegat=f.sifra
 						          where a.kolo=2 and d.sifra=$liga
 						         order by pocetak desc;
 						");
@@ -210,10 +214,12 @@ if(!isset($_GET["sifra"])){
 
                                 <?php
                                 $izraz = $veza->prepare("
-						          select a.sifra as sifraUtakmice, a.pocetak, a.kolo, a.domacin_score, a.delegat_potvrdio, a.gost_score, a.opis, b.naziv_kluba as domacin, b.mjesto as domacin_mjesto, c.naziv_kluba as gost, c.mjesto as gost_mjesto, d.sifra from utakmica a
+						          select a.sifra as sifraUtakmice, a.pocetak, a.mjesto, a.kolo, a.domacin_score, a.delegat_potvrdio, a.gost_score, a.opis, b.naziv_kluba as domacin, b.mjesto as domacinmjesto, c.naziv_kluba as gost, c.mjesto as gost_mjesto, d.sifra, d.razina, d.smjer, d.kategorija, e.ime, e.prezime from utakmica a
 						          inner join klub b on a.domacin=b.sifra
 						          inner join klub c on a.gost=c.sifra
 						          inner join liga d on a.liga=d.sifra
+						          inner join sudac e on a.sudac=e.sifra
+						          inner join delegat f on a.delegat=f.sifra
 						          where a.kolo=3 and d.sifra=$liga
 						         order by pocetak desc;
 						");
@@ -224,7 +230,7 @@ if(!isset($_GET["sifra"])){
 
                                     <tr>
                                         <td><?php echo date("d.m.Y. G:i",strtotime($red->pocetak)); ?></td>
-                                        <td><?php echo $red->domacin . " " . $red->domacin_mjesto; ?></td>
+                                        <td><?php echo $red->domacin . " " . $red->domacinmjesto; ?></td>
                                         <td><?php echo $red->gost . " " . $red->gost_mjesto; ?></td>
                                         <td><?php echo $red->domacin_score . " : " . $red->gost_score; ?></td>
                                         <td>
@@ -262,7 +268,7 @@ if(!isset($_GET["sifra"])){
         <?php include_once "template/podnozje.php"; ?>
     </div>
     <div class="modal fade" id="myModal" role="dialog" tabindex="-1">
-        <div class="modal-dialog" role="document" style="width: 60%;">
+        <div class="modal-dialog" role="document" style="width: 100%;">
 
             <!-- Modal content-->
             <?php include_once "modal.php"; ?>
@@ -287,14 +293,21 @@ if(!isset($_GET["sifra"])){
                     $("#utakmicaIzmedu").html("");
                     $("#rezultat").html("");
                     $("#datum").html("");
+                    $("#mjesto").html("");
                     $("#opis").html("");
+                    $("#sudac").html("");
+
+                    $("#liga").html("");
 
                     var niz = jQuery.parseJSON(vratioServer);
                     $( niz ).each(function(index,objekt) {
-                        $("#utakmicaIzmedu").append(objekt.domacin  + " - "  + objekt.gost);
+                        $("#utakmicaIzmedu").append(objekt.domacin + " - "  + objekt.gost);
                         $("#rezultat").append(objekt.domacin_score  + " : "  + objekt.gost_score);
                         $("#datum").append(objekt.pocetak);
+                        $("#mjesto").append(objekt.mjesto);
                         $("#opis").append(objekt.opis);
+                        $("#sudac").append(objekt.ime + " " + objekt.prezime);
+                        $("#liga").append(objekt.razina + ".ŽNL " + objekt.smjer + " " + objekt.kategorija);
 
                     });
 

@@ -49,7 +49,8 @@ $date=date("Y-m-d H:i");
                         inner join delegat c on a.delegat=c.sifra
                         inner join klub d on a.domacin=d.sifra
                         inner join klub e on a.gost=e.sifra
-                        inner join liga f on a.liga=f.sifra;
+                        inner join liga f on a.liga=f.sifra where pocetak>current_date 
+                        order by pocetak;
 						");
 					
 					$izraz->bindParam("uvjet", $uvjet);
