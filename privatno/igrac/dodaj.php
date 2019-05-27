@@ -191,11 +191,9 @@ if($_POST){
             locale: "hr",
             minDate: "today",
             enableTime:true
-
         });
     </script>
 	<script>
-
 		<?php if(isset($greska["ime"])):?>
     		setTimeout(function(){ $("#ime").focus(); },1000);
     <?php elseif(isset($greska["prezime"])):?>
@@ -205,10 +203,9 @@ if($_POST){
 	<?php elseif(isset($greska["godina"])):?>
 	    		setTimeout(function(){ $("#godina").focus(); },1000);
 
-
 	<?php endif; ?>
-
 	</script>
+
 	</body>
 
 </html>

@@ -5,17 +5,18 @@ $greska=array();
 
 if($_POST){
 	include_once 'kontrole.php';
-	
-	
 	if(count($greska)==0){
 		unset($_POST["sifra"]);
-		$izraz=$veza->prepare("insert into sudac (ime, prezime, email, lozinka, datum_rodjenja, mjesto, mobitel, liga) 
-							values (:ime, :prezime, :email, md5(:lozinka), :datum_rodjenja, :mjesto, :mobitel, :liga);");
+		$izraz=$veza->prepare("insert into sudac (ime, prezime, email, 
+                   lozinka, datum_rodjenja, mjesto, mobitel, liga) 
+			        values (:ime, :prezime, :email, md5(:lozinka), :datum_rodjenja, 
+			                :mjesto, :mobitel, :liga);");
 		$izraz->execute($_POST);
 		header("location: suci.php");
 	}
 }
 ?>
+
 <!DOCTYPE HTML>
 <html>
 	<head>

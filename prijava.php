@@ -17,7 +17,7 @@
 		<div class="col-sm-3"></div>
 		<div class="col-sm-6 text-center">
 			<form class="log-in-form" action="autoriziraj.php" method="post" style="alignment-adjust: center;">
-			  <h4 class="text-center">Prijava za suce</h4>
+			  <h4 class="text-center">Prijava</h4>
 			  <label>Nadimak ili email
 			    <input type="email" name="email" placeholder="primjer@hns.hr" value="<?php if(isset($_GET["email"])){
 				    	echo $_GET["email"];

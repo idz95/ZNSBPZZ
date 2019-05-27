@@ -56,11 +56,9 @@ provjeraOvlasti();
 	<script src="<?php echo $putanjaAPP; ?>js/cropper/cropper.js"></script>
     <script src="<?php echo $putanjaAPP; ?>js/cropper/main.js"></script>
     <script>
-    
     	$("#spremi").click(function(){
 		  	var cropcanvas = $('#image').cropper('getCroppedCanvas');
 			var croppng = cropcanvas.toDataURL("image/png");
-			
 		  	$.ajax({
 			  type: "POST",
 			  url: "spremiSliku.php",

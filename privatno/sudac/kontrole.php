@@ -28,8 +28,7 @@ if(!isset($_POST["sifra"])){
 	$izraz->execute(array("email"=>$_POST["email"], "sifra"=>$_POST["sifra"]));
 	$sifra = $izraz->fetchColumn();
 	if($sifra>0){
-		$greska["email"]="Email adresa postoji u bazi, odabrati drugu";
-	}
+		$greska["email"]="Email adresa postoji u bazi, odabrati drugu"; }
 	
 	
 	if(trim($_POST["lozinka"])===""){

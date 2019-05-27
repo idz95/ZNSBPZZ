@@ -7,8 +7,9 @@ if(!isset($_GET["sifra"])){
 }else {
     $liga=$_GET["sifra"];
     $izraz = $veza->prepare("
-	select a.sifra, a.naziv_kluba, a.mjesto, b.sifra as sifraLige, b.razina, b.smjer, b.kategorija from klub a 
-			inner join liga b on a.liga=b.sifra where b.sifra=:sifra;");
+	select a.sifra, a.naziv_kluba, a.mjesto, a.broj_bodova, b.sifra as sifraLige, b.razina, b.smjer, b.kategorija from klub a 
+			inner join liga b on a.liga=b.sifra where b.sifra=:sifra
+            order by a.broj_bodova desc ;");
     $izraz->execute($_GET);
 
     $rezultati = $izraz->fetchAll(PDO::FETCH_OBJ);
@@ -44,7 +45,9 @@ if(!isset($_GET["sifra"])){
                     <table class="table">
                         <thead>
                         <tr>
+
                             <th scope="col">Klub</th>
+                            <th scope="col">Broj bodova</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -52,7 +55,9 @@ if(!isset($_GET["sifra"])){
                         foreach ($rezultati as $red):
                             ?>
                             <tr>
+                             
                                 <td><a href="profilEkipe.php?sifra=<?php echo $red->sifra; ?>"><?php echo $red->naziv_kluba . " " . $red->mjesto; ?></a></td>
+                                <td><?php echo $red->broj_bodova ?></td>
                             </tr>
                         <?php endforeach; ?>
                         </tbody>
@@ -276,9 +281,8 @@ if(!isset($_GET["sifra"])){
         </div>
     </div>
     <?php include_once "template/skripte.php"; ?>
+
     <script>
-
-
         var sifraUtakmice;
         $(".detalji").click(function(){
 
@@ -289,14 +293,12 @@ if(!isset($_GET["sifra"])){
                 url: "traziDetalje.php",
                 data: "utakmica=" + sifraUtakmice,
                 success: function(vratioServer){
-
                     $("#utakmicaIzmedu").html("");
                     $("#rezultat").html("");
                     $("#datum").html("");
                     $("#mjesto").html("");
                     $("#opis").html("");
                     $("#sudac").html("");
-
                     $("#liga").html("");
 
                     var niz = jQuery.parseJSON(vratioServer);
@@ -308,14 +310,11 @@ if(!isset($_GET["sifra"])){
                         $("#opis").append(objekt.opis);
                         $("#sudac").append(objekt.ime + " " + objekt.prezime);
                         $("#liga").append(objekt.razina + ".ŽNL " + objekt.smjer + " " + objekt.kategorija);
-
                     });
-
                 }
             });
-
         });
-
     </script>
+
 </body>
 </html>

@@ -259,11 +259,11 @@ $id=$_SESSION[$appID."autoriziran"]->sifra;
   </div>  
 
 	<?php include_once "../../template/skripte.php"; ?>
+
+
 	<script>
-		
 		var sifraUtakmice;
 	$(".detalji").click(function(){
-    		
     		$("#detalji").html("UNESI REZULTAT!");
     		sifraUtakmice = $(this).attr("id").split("_")[1];
     		$.ajax({
@@ -278,14 +278,11 @@ $id=$_SESSION[$appID."autoriziran"]->sifra;
 			  	$("#tim1").append(objekt.domacin);
 				 $("#tim2").append(objekt.gost);
 				});
-				
 			  }
 			});
 			
     	});
-    	
     	$("#predaj").click(function(){
-			
 			$.ajax({
 			  type: "POST",
 			  url: "predajRezultat.php",
@@ -293,14 +290,10 @@ $id=$_SESSION[$appID."autoriziran"]->sifra;
 			  success: function(vratioServer){
 			  	if(vratioServer=="OK"){
 			  		alert("Predan rezultat");
-			  	
 			  	}
 			  }
 			});
 		});
-    	
-    	
-		
 	</script>
 
 	</body>
